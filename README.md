@@ -1,135 +1,133 @@
-# FOSSEE Workshop Booking — UI Redesign
+# FOSSEE Workshop Booking - UI Redesign
 
-A modern, mobile-first React redesign of the [FOSSEE Workshop Booking](https://github.com/FOSSEE/workshop_booking) platform by IIT Bombay.
+This is my submission for the FOSSEE Python Screening Task.
+I redesigned the existing workshop booking website using React.
 
-## Live Demo
->
-
-## Before & After
-
-| Before | After |
-|--------|-------|
-| Basic Django templates, no mobile support | Responsive React SPA with dark theme |
-| Plain Bootstrap tables | Card-based layout with search & filters |
-| No visual hierarchy | Clear typography, color system, animations |
-
->
+Original repository: https://github.com/FOSSEE/workshop_booking
 
 ---
 
-## Design Principles
+## How to run this project
 
-**1. Mobile-first layout**
-The original site had no responsive design. Since the task specified students access this primarily on mobile, every component was built mobile-first using CSS Grid with `auto-fill` and `minmax()`, fluid typography with `clamp()`, and a hamburger nav for small screens.
+1. Clone the repository
+   git clone https://github.com/manasvikhare19/fossee-workshop-ui.git
 
-**2. Visual hierarchy through typography and color**
-I chose DM Sans for body text (readable at small sizes) and Space Mono for code/numbers (gives a technical, academic feel appropriate for IIT Bombay). A single strong accent color (orange `#f97316`) guides the eye to key actions.
+2. Go into the folder
+   cd fossee-workshop-ui
 
-**3. Consistency through a design token system**
-All colors, spacing, fonts, and border radii are defined as CSS variables in `index.css`. This means changing the accent color site-wide takes one line — maintainable and scalable.
+3. Install dependencies
+   npm install
 
-**4. Accessibility**
-- Semantic HTML (`nav`, `main`, `footer`, `button`, `label`)
-- All images have `alt` text
-- Form inputs have associated `label` elements with `htmlFor`
-- Keyboard navigable — focus states visible on all interactive elements
-- ARIA labels on the hamburger toggle button
+4. Start the app
+   npm start
 
-**5. Performance**
-- No heavy UI libraries — pure CSS for all animations
-- Google Fonts loaded with `display=swap` to avoid render blocking
-- Images use `object-fit` to avoid layout shift
-- React Router for client-side navigation (no full page reloads)
+5. Open http://localhost:3000 in your browser
 
 ---
 
-## Responsiveness
+## Pages in this project
 
-- **Navbar**: Collapses to hamburger menu below 768px with smooth slide-down animation
-- **Cards**: CSS Grid with `auto-fill minmax(280px, 1fr)` — naturally reflows on any screen
-- **Typography**: `clamp()` for fluid font sizes between mobile and desktop
-- **Forms**: Single column on mobile, two-column grid on tablet+
-- **Tables**: Horizontally scrollable with `overflow-x: auto` on small screens
-- **Footer**: Stacks vertically on mobile
-
----
-
-## Trade-offs
-
-| Decision | Trade-off |
-|----------|-----------|
-| No UI component library (MUI/Ant) | More CSS to write, but faster load time and full design control |
-| Dark theme only | Simpler to implement well; no theme toggle needed for this scope |
-| Demo data instead of real API | Frontend-only prototype; real version would connect to Django REST API |
-| CSS Modules not used | Plain CSS files are simpler for a project this size |
-
----
-
-## Challenges
-
-**Biggest challenge: Responsive navbar with accessible hamburger menu**
-
-The original site used Bootstrap's navbar which handles this automatically. Building it from scratch in React required managing:
-- `useState` for open/closed toggle
-- `useEffect` with an outside-click listener to close the menu
-- CSS transforms for the animated hamburger → X transition
-- Fixed positioning that doesn't conflict with page content
-
-I approached it by first building the desktop layout, then progressively overriding styles in a `@media (max-width: 768px)` block.
+ Home - hero section, stats, workshop cards, how it works
+ 
+ About - FOSSEE mission, APJ Kalam quote, all FLOSS tools
+ 
+ Workshops - searchable and filterable list of workshops
+ 
+ Workshop Detail - full info about a specific workshop
+ 
+ Internships - all internship programs with open/closed status
+ 
+ Events - upcoming and past events
+ 
+ Statistics - impact numbers and workshop data
+ 
+ Propose - form to request a workshop at your college
+ 
+ Login - with demo credentials (manasvi_khare / manasvi)
+ 
+ Register - coordinator registration form with validation
 
 ---
 
-## Pages Built
+## What design principles guided my improvements?
 
-| Page | Route | Description |
-|------|-------|-------------|
-| Home | `/` | Hero, stats strip, workshop cards, how-it-works, CTA |
-| About | `/about` | FOSSEE mission, APJ Kalam quote, all 12 FLOSS tools, activities |
-| Workshops | `/workshops` | Searchable, filterable list of all workshop types |
-| Workshop Detail | `/workshops/:id` | Full details, terms, what to expect |
-| Internships | `/internships` | All internship programs with open/closed filter |
-| Events | `/events` | Upcoming and past events with tab navigation |
-| Statistics | `/statistics` | Impact numbers, bar chart by tool, recent workshops table |
-| Propose | `/propose` | Form to request a workshop at your college |
-| Login | `/login` | Auth form with demo credentials |
-| Register | `/register` | Coordinator registration with validation |
+The original site had no visual hierarchy and was hard to read
+on mobile. I focused on three things:
 
----
+1. Mobile first - since students mostly use phones, I built
+   every component to work on small screens first and then
+   adjusted for larger screens.
 
-## Tech Stack
+2. Clear structure - I used consistent spacing, font sizes,
+   and a single accent color (orange) so the user always knows
+   what to click next.
 
-- **React 18** — UI library
-- **React Router v6** — Client-side routing
-- **Plain CSS** — Styling with CSS custom properties (no Tailwind/Bootstrap)
-- **Google Fonts** — DM Sans + Space Mono
-- **Create React App** — Project scaffold
+3. Readable typography - I chose DM Sans for body text because
+   it is clean and easy to read at small sizes.
 
 ---
 
-## Setup Instructions
-```bash
-# 1. Clone the repository
-git clone https://github.com/manasvikhare19/fossee-workshop-ui.git
+## How did I ensure responsiveness?
 
-# 2. Enter the project folder
-cd fossee-workshop-ui
-
-# 3. Install dependencies
-npm install
-
-# 4. Start the development server
-npm start
-
-# 5. Open in browser
-# http://localhost:3000
-```
-
-### Demo Login Credentials
-| Username | Password | Role |
-|----------|----------|------|
-| manasvi_khare | manasvi | Coordinator |
-| instructor1 | demo123 | Instructor |
+ 1. The navbar collapses into a hamburger menu on mobile
+ 2. Cards use CSS Grid with auto-fill so they reflow automatically
+  on any screen size
+ 3. Font sizes use clamp() so they scale between mobile and desktop
+ 4. Forms go single column on mobile and two columns on tablet
+ 5. Tables scroll horizontally on small screens
 
 ---
 
-## Project Structure
+## Trade-offs between design and performance
+
+1. I did not use any UI library like Bootstrap or Material UI.
+  This means I had to write more CSS but the page loads faster
+  because there are no heavy libraries.
+
+2. I used Google Fonts which adds a small load time but makes
+  the typography much better. I added display=swap so it does
+  not block the page from loading.
+
+3. The site uses demo data instead of a real API. In a real
+  version this would connect to the Django backend.
+
+---
+
+## What was the most challenging part?
+
+Building the responsive navbar from scratch was the hardest part.
+The original site used Bootstrap which handles this automatically.
+I had to:
+1. Use useState to track if the menu is open or closed
+2. Add a click listener to close the menu when clicking outside
+3. Animate the hamburger icon turning into an X using CSS
+4. Make sure the menu does not overlap page content on mobile
+
+I solved it by first building the desktop version and then
+writing a separate media query block for mobile.
+
+---
+
+## Screenshots
+
+### Before (Original Site)
+![Original login page](./screenshots/before-login.png)
+![Original statistics page](./screenshots/before-statistics.png)
+
+### After (My Redesign)
+![New home page](./screenshots/after-home.png)
+![New login page](./screenshots/after-login.png)
+![New workshops page](./screenshots/after-workshops.png)
+![New statistics page](./screenshots/after-statistics.png)
+
+---
+
+## Tech used
+
+ React 18
+ 
+ React Router v6
+ 
+ Plain CSS with CSS variables
+ 
+ Google Fonts (DM Sans + Space Mono)
