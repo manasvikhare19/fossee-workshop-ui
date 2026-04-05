@@ -1,70 +1,135 @@
-# Getting Started with Create React App
+# FOSSEE Workshop Booking — UI Redesign
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, mobile-first React redesign of the [FOSSEE Workshop Booking](https://github.com/FOSSEE/workshop_booking) platform by IIT Bombay.
 
-## Available Scripts
+## Live Demo
+>
 
-In the project directory, you can run:
+## Before & After
 
-### `npm start`
+| Before | After |
+|--------|-------|
+| Basic Django templates, no mobile support | Responsive React SPA with dark theme |
+| Plain Bootstrap tables | Card-based layout with search & filters |
+| No visual hierarchy | Clear typography, color system, animations |
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## Design Principles
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**1. Mobile-first layout**
+The original site had no responsive design. Since the task specified students access this primarily on mobile, every component was built mobile-first using CSS Grid with `auto-fill` and `minmax()`, fluid typography with `clamp()`, and a hamburger nav for small screens.
 
-### `npm run build`
+**2. Visual hierarchy through typography and color**
+I chose DM Sans for body text (readable at small sizes) and Space Mono for code/numbers (gives a technical, academic feel appropriate for IIT Bombay). A single strong accent color (orange `#f97316`) guides the eye to key actions.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**3. Consistency through a design token system**
+All colors, spacing, fonts, and border radii are defined as CSS variables in `index.css`. This means changing the accent color site-wide takes one line — maintainable and scalable.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**4. Accessibility**
+- Semantic HTML (`nav`, `main`, `footer`, `button`, `label`)
+- All images have `alt` text
+- Form inputs have associated `label` elements with `htmlFor`
+- Keyboard navigable — focus states visible on all interactive elements
+- ARIA labels on the hamburger toggle button
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**5. Performance**
+- No heavy UI libraries — pure CSS for all animations
+- Google Fonts loaded with `display=swap` to avoid render blocking
+- Images use `object-fit` to avoid layout shift
+- React Router for client-side navigation (no full page reloads)
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Responsiveness
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Navbar**: Collapses to hamburger menu below 768px with smooth slide-down animation
+- **Cards**: CSS Grid with `auto-fill minmax(280px, 1fr)` — naturally reflows on any screen
+- **Typography**: `clamp()` for fluid font sizes between mobile and desktop
+- **Forms**: Single column on mobile, two-column grid on tablet+
+- **Tables**: Horizontally scrollable with `overflow-x: auto` on small screens
+- **Footer**: Stacks vertically on mobile
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Trade-offs
 
-## Learn More
+| Decision | Trade-off |
+|----------|-----------|
+| No UI component library (MUI/Ant) | More CSS to write, but faster load time and full design control |
+| Dark theme only | Simpler to implement well; no theme toggle needed for this scope |
+| Demo data instead of real API | Frontend-only prototype; real version would connect to Django REST API |
+| CSS Modules not used | Plain CSS files are simpler for a project this size |
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Challenges
 
-### Code Splitting
+**Biggest challenge: Responsive navbar with accessible hamburger menu**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The original site used Bootstrap's navbar which handles this automatically. Building it from scratch in React required managing:
+- `useState` for open/closed toggle
+- `useEffect` with an outside-click listener to close the menu
+- CSS transforms for the animated hamburger → X transition
+- Fixed positioning that doesn't conflict with page content
 
-### Analyzing the Bundle Size
+I approached it by first building the desktop layout, then progressively overriding styles in a `@media (max-width: 768px)` block.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+## Pages Built
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+| Page | Route | Description |
+|------|-------|-------------|
+| Home | `/` | Hero, stats strip, workshop cards, how-it-works, CTA |
+| About | `/about` | FOSSEE mission, APJ Kalam quote, all 12 FLOSS tools, activities |
+| Workshops | `/workshops` | Searchable, filterable list of all workshop types |
+| Workshop Detail | `/workshops/:id` | Full details, terms, what to expect |
+| Internships | `/internships` | All internship programs with open/closed filter |
+| Events | `/events` | Upcoming and past events with tab navigation |
+| Statistics | `/statistics` | Impact numbers, bar chart by tool, recent workshops table |
+| Propose | `/propose` | Form to request a workshop at your college |
+| Login | `/login` | Auth form with demo credentials |
+| Register | `/register` | Coordinator registration with validation |
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Tech Stack
 
-### Deployment
+- **React 18** — UI library
+- **React Router v6** — Client-side routing
+- **Plain CSS** — Styling with CSS custom properties (no Tailwind/Bootstrap)
+- **Google Fonts** — DM Sans + Space Mono
+- **Create React App** — Project scaffold
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+## Setup Instructions
+```bash
+# 1. Clone the repository
+git clone https://github.com/manasvikhare19/fossee-workshop-ui.git
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# 2. Enter the project folder
+cd fossee-workshop-ui
+
+# 3. Install dependencies
+npm install
+
+# 4. Start the development server
+npm start
+
+# 5. Open in browser
+# http://localhost:3000
+```
+
+### Demo Login Credentials
+| Username | Password | Role |
+|----------|----------|------|
+| manasvi_khare | manasvi | Coordinator |
+| instructor1 | demo123 | Instructor |
+
+---
+
+## Project Structure
