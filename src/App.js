@@ -13,7 +13,7 @@ import InternshipsPage from './pages/InternshipsPage';
 import EventsPage from './pages/EventsPage';
 import AboutPage from './pages/AboutPage';
 import './App.css';
-
+import NotFoundPage from './pages/NotFoundPage';
 function App() {
   return (
     <BrowserRouter>
@@ -30,6 +30,7 @@ function App() {
           <Route path="/internships"   element={<InternshipsPage />} />
           <Route path="/events"        element={<EventsPage />} />
           <Route path="/about"         element={<AboutPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
       <Footer />
