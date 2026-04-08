@@ -24,6 +24,8 @@ Original repository: https://github.com/FOSSEE/workshop_booking
 5. Open http://localhost:3000 in your browser
 
 ---
+### Demo Video
+https://github.com/user-attachments/assets/a3a0cea8-1e61-4623-b435-bc07e369133e
 
 ## Pages in this project
 
@@ -121,13 +123,22 @@ writing a separate media query block for mobile.
 ### Static Page
 
 <img width="1919" height="1079" alt="Screenshot 2026-04-05 105327" src="https://github.com/user-attachments/assets/1e05d382-8d61-4901-a848-ed58fb59f8f9" />
+
 ### After (My Redesign)
 
 
 ![New home page](./screenshots/after-home.png)
+<img width="1919" height="968" alt="image" src="https://github.com/user-attachments/assets/c564d2ce-6685-476f-b0a4-337d56874416" />
+
 ![New login page](./screenshots/after-login.png)
+<img width="1919" height="971" alt="image" src="https://github.com/user-attachments/assets/e783dfaa-6cea-4169-8f4e-b1031e7acd90" />
+
 ![New workshops page](./screenshots/after-workshops.png)
+<img width="1919" height="968" alt="image" src="https://github.com/user-attachments/assets/1ea6672b-78a0-483d-b65d-87762a466023" />
+
 ![New statistics page](./screenshots/after-statistics.png)
+<img width="1919" height="969" alt="image" src="https://github.com/user-attachments/assets/176d88aa-a9d7-426a-8060-1e1cab7eeda4" />
+
 
 
 ---
