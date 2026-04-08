@@ -111,14 +111,24 @@ writing a separate media query block for mobile.
 ## Screenshots
 
 ### Before (Original Site)
-![Original login page](./screenshots/before-login.png)
-![Original statistics page](./screenshots/before-statistics.png)
+### Login Page 
+<img width="1919" height="1079" alt="Screenshot 2026-04-05 105159" src="https://github.com/user-attachments/assets/0c4f2c63-7417-4979-b9d9-a142b5b5972d" />
 
+### Home Page
+
+<img width="1919" height="1079" alt="Screenshot 2026-04-05 105216" src="https://github.com/user-attachments/assets/b7951806-574d-43a0-be1f-947f9931c36f" />
+
+### Static Page
+
+<img width="1919" height="1079" alt="Screenshot 2026-04-05 105327" src="https://github.com/user-attachments/assets/1e05d382-8d61-4901-a848-ed58fb59f8f9" />
 ### After (My Redesign)
+
+
 ![New home page](./screenshots/after-home.png)
 ![New login page](./screenshots/after-login.png)
 ![New workshops page](./screenshots/after-workshops.png)
 ![New statistics page](./screenshots/after-statistics.png)
+
 
 ---
 
