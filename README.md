@@ -25,6 +25,8 @@ Original repository: https://github.com/FOSSEE/workshop_booking
 
 ---
 ### Demo Video
+**➡️ [DEPLOYED-LINK-](fossee-workshop-ui-woad.vercel.app)**
+
 https://github.com/user-attachments/assets/a3a0cea8-1e61-4623-b435-bc07e369133e
 
 ## Pages in this project
