@@ -25,10 +25,10 @@ Original repository: https://github.com/FOSSEE/workshop_booking
 
 ---
 ### Demo Video
-**➡️ [DEPLOYED-LINK-](fossee-workshop-ui-woad.vercel.app)**
 
-[https://drive.google.com/file/d/1d8qtnKNWZXG4mHk7fVT6F798Nps-m6mf/view?usp=drivesdk]
-](Demo Video)
+[demo](https://drive.google.com/file/d/1d8qtnKNWZXG4mHk7fVT6F798Nps-m6mf/view?usp=drivesdk)
+➡️ [DEPLOYED-LINK-](fossee-workshop-ui-woad.vercel.app)
+
 ## Pages in this project
 
  Home - hero section, stats, workshop cards, how it works
