@@ -24,10 +24,12 @@ Original repository: https://github.com/FOSSEE/workshop_booking
 5. Open http://localhost:3000 in your browser
 
 ---
+### Deployed link
+➡️ [DEPLOYED-LINK](fossee-workshop-ui-woad.vercel.app)
 ### Demo Video
 
 [demo](https://drive.google.com/file/d/1d8qtnKNWZXG4mHk7fVT6F798Nps-m6mf/view?usp=drivesdk)
-➡️ [DEPLOYED-LINK-](fossee-workshop-ui-woad.vercel.app)
+
 
 ## Pages in this project
 
